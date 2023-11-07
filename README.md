@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# Vercel 링크
+<https://react-todo-kpvn2rtjw-namgoongchuls-projects.vercel.app/>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Intro
+기본적인 기능만을 갖춘 TodoList입니다. 아래의 기능들을 구현했습니다.
 
-## Available Scripts
 
-In the project directory, you can run:
+ - 완료
+ - 삭제
+ - 추가
+ - 수정
+ - 중요도 설정
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 추가 구현
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `yarn test`
+ - Modal 구현 ( todo 추가 부분 )
+ - 수정 기능 ( 수정 버튼 클릭 시 input 활성화 )
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+## 구현 못한 부분
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+ - sidebar부분은 카테고리로 추후 추가 구현 예정
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+## Components
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ - App : 최상위 컴포넌트로 state 및 event함수를 가지고 있는 컴포넌트
+ - Template : Todo리스트를 중간에 정렬하고 전체 틀을 구성
+ - SideBar : 추후 router-dom으로 추가할 예정
+ - TodoHeader : 카테고리 이름 및 분류 탭으로 구성된 헤더
+ - TodoList : state로 관리되는 todos를 TodoListItem으로 매핑 및 추가 버튼으로 구성된 컴포넌트
+ - TodoListItem : 각각의 todo를 렌더링해주는 컴포넌트
+ - AddTodoModal : todo를 추가하는 모달을 구성하는 컴포넌트
