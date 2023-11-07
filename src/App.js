@@ -40,7 +40,7 @@ const App = () => {
   const unCheckedTasks = todos.filter((todo) => !todo.checked);
   const CheckedTasks = todos.filter((todo) => todo.checked);
 
-  const nextId = useRef(3);
+  const nextId = useRef(5);
 
   const onCheckToggle = (id) => {
     setTodos(
