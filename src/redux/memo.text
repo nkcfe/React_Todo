@@ -1,0 +1,8 @@
+redux 폴더 : 리덕스 관련 코드 모두 몰아 넣기
+config : 리덕스 관련 파일 전부
+configStore : 중앙 state관리소 -> 설정 코드(.js)
+modules : state의 그룹 TodoList, todos.js
+
+너무 깊이 이해하지 마라.
+
+react router dom

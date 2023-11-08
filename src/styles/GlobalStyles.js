@@ -2,6 +2,7 @@ import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 
 const GlobalStyle = createGlobalStyle`
+    /* css reset 및 글로벌 css 적용  */
     ${reset}
     a{
         text-decoration: none;
@@ -9,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
     }
     *{
         box-sizing: border-box;
+        transition : all 0.4s ease
     }
     html, body, div, span, h1, h2, h3, h4, h5, h6, p, 
     a, dl, dt, dd, ol, ul, li, form, label, table{

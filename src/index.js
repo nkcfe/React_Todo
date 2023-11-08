@@ -5,13 +5,17 @@ import reportWebVitals from "./reportWebVitals";
 import GlobalStyle from "./styles/GlobalStyles";
 import { ThemeProvider } from "styled-components";
 import theme from "./styles/theme";
+import { Provider } from "react-redux";
+import store from "./redux/config/configStore";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <ThemeProvider theme={theme}>
+  <>
     <GlobalStyle />
-    <App />
-  </ThemeProvider>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </>
 );
 
 // If you want to start measuring performance in your app, pass a function
