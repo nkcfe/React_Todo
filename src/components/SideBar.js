@@ -10,7 +10,7 @@ const SideBar = ({ onCategorySelect }) => {
   const todos = useSelector((state) => {
     return state.todoReducer;
   });
-
+  console.log(todos);
   const [selectedCategory, setSelectedCategory] = useState(1); // 선택된 카테고리 관리 (초기값 첫번쨰)
   const [isCategoryModalOpen, setIsCategorymodalOpen] = useState(false); // 카테고리 추가 모달 오픈 관리
 

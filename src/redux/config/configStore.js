@@ -2,10 +2,19 @@
 import { createStore } from "redux";
 import { combineReducers } from "redux";
 import todoReducer from "../modules/todo";
+import { configureStore } from "@reduxjs/toolkit";
 
-const rootReducer = combineReducers({
-  todoReducer,
+// 일반 리듀서
+// const rootReducer = combineReducers({
+//   todoReducer,
+// });
+// const store = createStore(rootReducer);
+
+// 리덕스 툴킷
+const store = configureStore({
+  reducer: {
+    todoReducer: todoReducer,
+  },
 });
-const store = createStore(rootReducer);
 
 export default store;

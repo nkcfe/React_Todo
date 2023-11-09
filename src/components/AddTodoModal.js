@@ -21,7 +21,7 @@ const AddTodoModal = ({ handleModalClose, selectedCategory }) => {
       checked: false,
       importance: false,
     };
-    dispatch(createTodo(newTodo, selectedCategory)); // 투두리스트 생성
+    dispatch(createTodo({ value: newTodo, id: selectedCategory })); // 투두리스트 생성
     handleModalClose(); // 모달 닫기
     setTodoText(""); // input 비우기
     setTodoTitle(""); // input 비우기

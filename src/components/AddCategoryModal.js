@@ -19,7 +19,7 @@ const AddCategoryModal = ({ handleModalClose }) => {
       category: categoryTitle,
       contents: [],
     };
-    dispatch(createCategory(newCategory)); // action
+    dispatch(createCategory({ value: newCategory })); // action
     e.preventDefault(); // 새로고침 방지
     handleModalClose(); // 모달 닫기
     setCategoryTitle(""); // input 비우기

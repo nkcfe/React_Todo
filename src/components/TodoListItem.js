@@ -55,23 +55,30 @@ const TodoListItem = ({ todo, selectedCategory }) => {
   // 수정 모드 완료하기
   // 수정 action 호출.
   const onClickEditComplete = () => {
-    dispatch(modifyTodo(selectedCategory, id, todoTitle, todoText));
+    dispatch(
+      modifyTodo({
+        categoryId: selectedCategory,
+        todoId: id,
+        title: todoTitle,
+        text: todoText,
+      })
+    );
     onToggleEditMode();
   };
 
   // 투두 완료 토글 기능
   const onClickCheckToggle = () => {
-    dispatch(checkToggleTodo(selectedCategory, id));
+    dispatch(checkToggleTodo({ categoryId: selectedCategory, todoId: id }));
   };
 
   // 투두 중요도 토글 기능
   const onClickImpToggle = () => {
-    dispatch(impToggleTodo(selectedCategory, id));
+    dispatch(impToggleTodo({ categoryId: selectedCategory, todoId: id }));
   };
 
   // 투두 삭제 기능
   const onClickDeleteTodo = () => {
-    dispatch(deleteTodo(selectedCategory, id));
+    dispatch(deleteTodo({ categoryId: selectedCategory, todoId: id }));
   };
 
   return (

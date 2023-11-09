@@ -1,59 +1,61 @@
+import { createSlice } from "@reduxjs/toolkit";
+
 // action value
-const CREATE = "todo/CREATE";
-const CREATE_CATEGORY = "todo/CREATE_CATEGORY";
-const DELETE = "todo/DELETE";
-const MODIFY = "todo/MODIFY";
-const CHECK_TOGGLE = "todo/CHECK_TOGGLE";
-const IMP_TOGGLE = "todo/IMP_TOGGLE";
+// const CREATE = "todo/CREATE";
+// const CREATE_CATEGORY = "todo/CREATE_CATEGORY";
+// const DELETE = "todo/DELETE";
+// const MODIFY = "todo/MODIFY";
+// const CHECK_TOGGLE = "todo/CHECK_TOGGLE";
+// const IMP_TOGGLE = "todo/IMP_TOGGLE";
 
-// action createor : action value를 return하는 함수
-export const createCategory = (value) => {
-  return {
-    type: CREATE_CATEGORY,
-    value,
-  };
-};
-export const createTodo = (value, id) => {
-  return {
-    type: CREATE,
-    value,
-    id,
-  };
-};
+// // action createor : action value를 return하는 함수
+// export const createCategory = (value) => {
+//   return {
+//     type: CREATE_CATEGORY,
+//     value,
+//   };
+// };
+// export const createTodo = (value, id) => {
+//   return {
+//     type: CREATE,
+//     value,
+//     id,
+//   };
+// };
 
-export const deleteTodo = (categoryId, todoId) => {
-  return {
-    type: DELETE,
-    categoryId,
-    todoId,
-  };
-};
+// export const deleteTodo = (categoryId, todoId) => {
+//   return {
+//     type: DELETE,
+//     categoryId,
+//     todoId,
+//   };
+// };
 
-export const modifyTodo = (categoryId, todoId, title, text) => {
-  return {
-    type: MODIFY,
-    categoryId,
-    todoId,
-    title,
-    text,
-  };
-};
+// export const modifyTodo = (categoryId, todoId, title, text) => {
+//   return {
+//     type: MODIFY,
+//     categoryId,
+//     todoId,
+//     title,
+//     text,
+//   };
+// };
 
-export const checkToggleTodo = (categoryId, todoId) => {
-  return {
-    type: CHECK_TOGGLE,
-    categoryId,
-    todoId,
-  };
-};
+// export const checkToggleTodo = (categoryId, todoId) => {
+//   return {
+//     type: CHECK_TOGGLE,
+//     categoryId,
+//     todoId,
+//   };
+// };
 
-export const impToggleTodo = (categoryId, todoId) => {
-  return {
-    type: IMP_TOGGLE,
-    categoryId,
-    todoId,
-  };
-};
+// export const impToggleTodo = (categoryId, todoId) => {
+//   return {
+//     type: IMP_TOGGLE,
+//     categoryId,
+//     todoId,
+//   };
+// };
 
 // 초기 상태값 (state)
 const initialTodoState = [
@@ -147,57 +149,153 @@ const initialTodoState = [
 
 // action 객체라는 것은 action type을 payload만큼 처리하는 것.
 // ex : payload가 3이다.
-const todoReducer = (state = initialTodoState, action) => {
-  switch (action.type) {
-    case CREATE_CATEGORY:
-      return state.concat(action.value);
+// const todoReducer = (state = initialTodoState, action) => {
+//   switch (action.type) {
+//     case CREATE_CATEGORY:
+//       return state.concat(action.value);
 
-    case CREATE:
+//     case CREATE:
+//       return state.map((category) => {
+//         if (category.id === action.id) {
+//           return {
+//             ...category,
+//             contents: [...category.contents, action.value],
+//           };
+//         }
+//         return category;
+//       });
+
+//     case DELETE:
+//       return state.map((category) => {
+//         if (category.id === action.categoryId) {
+//           return {
+//             ...category,
+//             contents: category.contents.filter(
+//               (todo) => todo.id !== action.todoId
+//             ),
+//           };
+//         }
+//         return category;
+//       });
+
+//     case CHECK_TOGGLE:
+//       return state.map((category) => {
+//         if (category.id === action.categoryId) {
+//           return {
+//             ...category,
+//             contents: category.contents.map((todo) =>
+//               todo.id === action.todoId
+//                 ? { ...todo, checked: !todo.checked }
+//                 : todo
+//             ),
+//           };
+//         }
+//         return category;
+//       });
+
+//     case IMP_TOGGLE:
+//       return state.map((category) => {
+//         if (category.id === action.categoryId) {
+//           return {
+//             ...category,
+//             contents: category.contents.map((todo) =>
+//               todo.id === action.todoId
+//                 ? { ...todo, importance: !todo.importance }
+//                 : todo
+//             ),
+//           };
+//         }
+//         return category;
+//       });
+
+//     case MODIFY:
+//       return state.map((category) => {
+//         if (category.id === action.categoryId) {
+//           return {
+//             ...category,
+//             contents: category.contents.map((todo) =>
+//               todo.id === action.todoId
+//                 ? { ...todo, title: action.title, text: action.text }
+//                 : todo
+//             ),
+//           };
+//         }
+//         return category;
+//       });
+
+//     default:
+//       return state;
+//   }
+// };
+
+const todoSlice = createSlice({
+  name: "todoReducer",
+  initialState: initialTodoState,
+  reducers: {
+    createCategory: (state, action) => {
+      const { value } = action.payload;
+      return state.concat(value);
+    },
+    createTodo: (state, action) => {
+      const { value, id } = action.payload;
       return state.map((category) => {
-        if (category.id === action.id) {
+        if (category.id === id) {
           return {
             ...category,
-            contents: [...category.contents, action.value],
+            contents: [...category.contents, value],
           };
         }
         return category;
       });
-
-    case DELETE:
+    },
+    deleteTodo: (state, action) => {
+      const { categoryId, todoId } = action.payload;
       return state.map((category) => {
-        if (category.id === action.categoryId) {
+        if (category.id === categoryId) {
           return {
             ...category,
-            contents: category.contents.filter(
-              (todo) => todo.id !== action.todoId
+            contents: category.contents.filter((todo) => todo.id !== todoId),
+          };
+        }
+        return category;
+      });
+    },
+    modifyTodo: (state, action) => {
+      const { categoryId, todoId, title, text } = action.payload;
+      return state.map((category) => {
+        if (category.id === categoryId) {
+          return {
+            ...category,
+            contents: category.contents.map((todo) =>
+              todo.id === todoId ? { ...todo, title: title, text: text } : todo
             ),
           };
         }
         return category;
       });
-
-    case CHECK_TOGGLE:
+    },
+    checkToggleTodo: (state, action) => {
+      const { categoryId, todoId } = action.payload;
       return state.map((category) => {
-        if (category.id === action.categoryId) {
+        if (category.id === categoryId) {
           return {
             ...category,
             contents: category.contents.map((todo) =>
-              todo.id === action.todoId
-                ? { ...todo, checked: !todo.checked }
-                : todo
+              todo.id === todoId ? { ...todo, checked: !todo.checked } : todo
             ),
           };
         }
         return category;
       });
-
-    case IMP_TOGGLE:
+    },
+    impToggleTodo: (state, action) => {
+      const { categoryId, todoId } = action.payload;
       return state.map((category) => {
-        if (category.id === action.categoryId) {
+        if (category.id === categoryId) {
           return {
             ...category,
             contents: category.contents.map((todo) =>
-              todo.id === action.todoId
+              todo.id === todoId
                 ? { ...todo, importance: !todo.importance }
                 : todo
             ),
@@ -205,25 +303,16 @@ const todoReducer = (state = initialTodoState, action) => {
         }
         return category;
       });
+    },
+  },
+});
 
-    case MODIFY:
-      return state.map((category) => {
-        if (category.id === action.categoryId) {
-          return {
-            ...category,
-            contents: category.contents.map((todo) =>
-              todo.id === action.todoId
-                ? { ...todo, title: action.title, text: action.text }
-                : todo
-            ),
-          };
-        }
-        return category;
-      });
-
-    default:
-      return state;
-  }
-};
-
-export default todoReducer;
+export default todoSlice.reducer;
+export const {
+  createCategory,
+  createTodo,
+  deleteTodo,
+  modifyTodo,
+  checkToggleTodo,
+  impToggleTodo,
+} = todoSlice.actions;
