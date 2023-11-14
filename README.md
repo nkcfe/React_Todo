@@ -1,5 +1,5 @@
 # Vercel 링크
-<https://react-todo-kpvn2rtjw-namgoongchuls-projects.vercel.app/>
+[<https://react-todo-kpvn2rtjw-namgoongchuls-projects.vercel.app/>](https://react-todo-ecru-two.vercel.app/)
 
 ## update
 - 23년 11월 9일 : redux toolkit 적용 및 lv2 업그레이드 완료
